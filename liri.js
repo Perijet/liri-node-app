@@ -63,3 +63,19 @@ function spot(){
 
 }
 
+//Twitter function===================================================
+function twit(){
+	
+	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=5', function(error, tweets, response){
+  	
+  	if(error) throw error;
+
+  	for(var i = 0; i < tweets.length; i++){
+
+  		console.log('\nCreated on: ' + tweets[i].created_at);
+  		console.log(tweets[i].text);
+  	}
+  	 
+	});
+
+}
