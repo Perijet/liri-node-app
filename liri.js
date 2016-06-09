@@ -79,3 +79,41 @@ function twit(){
 	});
 
 }
+
+//Movie Function=====================================================
+function movie(){
+
+	var movieName = "";
+
+	for (var i=3; i<nodeArgs.length; i++){
+		if (i>3 && i< nodeArgs.length){
+			movieName = movieName + '+' + nodeArgs[i];
+		}
+		else {
+			movieName = movieName + nodeArgs[i];
+		}
+	}
+ 
+	var queryUrl = 'http://www.omdbapi.com/?t=' + (movieName || 'Mr. Nobody')+'&y=&plot=short&r&tomatoes=json';
+	  
+	console.log(queryUrl);
+
+	request(queryUrl, function (error, response, body) {
+
+		if (!error && response.statusCode == 200) {
+
+			var movieInfo = JSON.parse(body);
+
+			console.log('\nTitle: ' + movieInfo.Title);
+			console.log('Year: ' + movieInfo.Year);
+			console.log('IMDB Rating: ' + movieInfo.Rated);
+			console.log('Country: ' + movieInfo.Country);
+			console.log('Language: ' + movieInfo.Language);
+			console.log('Plot: ' + movieInfo.Plot);
+			console.log('Actors: ' + movieInfo.Actors);
+			console.log('Tomato Rating: ' + movieInfo.tomatoRating);
+			console.log('Tomato URL: ' + movieInfo.tomatoURL + '\n');
+		}
+	});
+
+}
