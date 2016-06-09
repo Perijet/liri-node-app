@@ -1,13 +1,18 @@
 # liri-node-app
 
-#### LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
+LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
+
+### Fetching Tweets With LIRI
 
 Running the following commands in your terminal will do the followig things
 
 `node liri.js my-tweets`
 
 will show your last 20 tweets and when they were created at in the terminal
-***
+
+----
+
+### Fetching Spotify Songs Inf With LIRI
 
 `node liri.js spotify-this-song '<song name here>’`
 
@@ -19,7 +24,10 @@ shows the following information about the song in the terminal
 + album that the song is a part of
 + song name
 if no song is provided then your program will default to "what's my age again" by blink 182
-***
+
+----
+
+### Fetching OMDB Movie Info With LIRT
 
 `node liri.js movie-this '<movie name here>’`
 
@@ -36,7 +44,10 @@ this would output the following information to the terminal:
 + Rotton Tomatoes UrL
 
 if no movie is provided then the program will output information for the movie: 'Mr. Nobody'
-***
+
+----
+
+### Fetching Info Specified by the random.txt File With LIRI
 
 `node liri.js do-what-it-says` 
 
