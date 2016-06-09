@@ -9,11 +9,11 @@ var argv2 = process.argv[3];
 var nodeArgs = process.argv;
 
 
-//Switch statements to select from user input==================================
-
+//Switch statements to select from user input========================
+function choose(argv1, nodeArgs){
 switch(argv1){
 	case 'spotify-this-song':
-		spot();
+		spot(nodeArgs);
 	break;
 
 	case 'my-tweets':
@@ -30,10 +30,13 @@ switch(argv1){
 
 	default:
 		console.log('\nWhen you make a choice, you change the future\n');
-
+}
 }
 
-//Spotify function=============================================================
+choose(process.argv[2],  process.argv);
+
+
+//Spotify function===================================================
 function spot(){
 
 	var songName = "";
@@ -63,10 +66,10 @@ function spot(){
 
 }
 
-//Twitter function=============================================================
+//Twitter function===================================================
 function twit(){
 	
-	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=5', function(error, tweets, response){
+	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=10', function(error, tweets, response){
   	
   	if(error) throw error;
 
@@ -76,11 +79,12 @@ function twit(){
   		console.log(tweets[i].text);
   	}
   	 
+  	console.log('\n');
 	});
 
 }
 
-//Movie Function===============================================================
+//Movie Function=====================================================
 function movie(){
 
 	var movieName = "";
@@ -94,7 +98,7 @@ function movie(){
 		}
 	}
  
-	var queryUrl = 'http://www.omdbapi.com/?t=' + (movieName || 'Mr. Nobody')+'&y=&plot=short&r&tomatoes=json';
+	var queryUrl = 'http://www.omdbapi.com/?t=' + (movieName || 'Mr. Nobody') +'&y=&plot=short&r=json&tomatoes=true';
 	  
 	console.log(queryUrl);
 
@@ -104,7 +108,7 @@ function movie(){
 
 			var movieInfo = JSON.parse(body);
 
-			console.log('\nTitle: ' + movieInfo.Title);
+			console.log('\nTitle: ' + movieInfo.Title); 
 			console.log('Year: ' + movieInfo.Year);
 			console.log('IMDB Rating: ' + movieInfo.Rated);
 			console.log('Country: ' + movieInfo.Country);
@@ -114,6 +118,19 @@ function movie(){
 			console.log('Tomato Rating: ' + movieInfo.tomatoRating);
 			console.log('Tomato URL: ' + movieInfo.tomatoURL + '\n');
 		}
+	});
+
+}
+
+//Do what it says function===========================================
+function doWhat(){
+	fs.readFile('random.txt', 'utf8', function(err, data){
+		
+		var input1 = data.split(',')[0];
+		var input2 = data.split(',')[1].replace(/['"]+/g, '');
+
+		choose(input1, input2);
+
 	});
 
 }
