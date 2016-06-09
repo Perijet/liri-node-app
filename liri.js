@@ -9,7 +9,7 @@ var argv2 = process.argv[3];
 var nodeArgs = process.argv;
 
 
-//Switch statements to select from user input========================
+//Switch statements to select from user input==================================
 
 switch(argv1){
 	case 'spotify-this-song':
@@ -33,7 +33,7 @@ switch(argv1){
 
 }
 
-//Spotify function===================================================
+//Spotify function=============================================================
 function spot(){
 
 	var songName = "";
@@ -63,7 +63,7 @@ function spot(){
 
 }
 
-//Twitter function===================================================
+//Twitter function=============================================================
 function twit(){
 	
 	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=5', function(error, tweets, response){
@@ -80,7 +80,7 @@ function twit(){
 
 }
 
-//Movie Function=====================================================
+//Movie Function===============================================================
 function movie(){
 
 	var movieName = "";
