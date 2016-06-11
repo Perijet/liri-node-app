@@ -33,8 +33,7 @@ switch(argv1){
 }
 }
 
-choose(process.argv[2],  process.argv);
-
+choose(argv1,  nodeArgs);
 
 //Spotify function===================================================
 function spot(){
@@ -69,7 +68,7 @@ function spot(){
 //Twitter function===================================================
 function twit(){
 	
-	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=10', function(error, tweets, response){
+	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=pirejet&count=5', function(error, tweets, response){
   	
   	if(error) throw error;
 
@@ -79,7 +78,6 @@ function twit(){
   		console.log(tweets[i].text);
   	}
   	 
-  	console.log('\n');
 	});
 
 }
@@ -98,7 +96,7 @@ function movie(){
 		}
 	}
  
-	var queryUrl = 'http://www.omdbapi.com/?t=' + (movieName || 'Mr. Nobody') +'&y=&plot=short&r=json&tomatoes=true';
+	var queryUrl = 'http://www.omdbapi.com/?t=' + (movieName || 'Mr. Nobody')+'&y=&plot=short&r=json&tomatoes=true';
 	  
 	console.log(queryUrl);
 
@@ -108,7 +106,7 @@ function movie(){
 
 			var movieInfo = JSON.parse(body);
 
-			console.log('\nTitle: ' + movieInfo.Title); 
+			console.log('\nTitle: ' + movieInfo.Title);
 			console.log('Year: ' + movieInfo.Year);
 			console.log('IMDB Rating: ' + movieInfo.Rated);
 			console.log('Country: ' + movieInfo.Country);
